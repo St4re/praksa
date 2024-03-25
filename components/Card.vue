@@ -1,9 +1,11 @@
 <template>
-  <article v-for="card in cards" :key="card.id" class="card" >
+    <div class="loader" v-if="loading">Loading...</div>
+
+    <article v-bind="$attrs" v-else v-for="card in cards" :key="card.id" class="card" >
         <ul >
           <li>Name: <span>{{card.name}}</span></li>
-          <li>Height: <span>{{card.height}} </span></li>
-          <li>Mass: <span>{{card.mass}}</span></li>
+          <li>Height: <span>{{card.height + " cm"}} </span></li>
+          <li>Mass: <span>{{card.mass  + " kg"}} </span></li>
           <li>Hair color: <span class="capitalize">{{ card.hair_color }}</span></li>
           <li>Skin color: <span class="capitalize">{{ card.skin_color }}</span></li>
           <li>Eye color: <span class="capitalize">{{ card.eye_color }}</span></li>
@@ -15,6 +17,8 @@
 </template>
 
 <script>
+import "./assets/css/main.css"
+
 import {mapStores } from "pinia"
 import {mapState } from "pinia"
 import {cardInfo} from "@/assets/cardInfo.json"
@@ -28,6 +32,7 @@ export default {
      data() {
         return {
           cards: [],
+          loading: false,
          /* cardData: cardInfo,*/
         }
     },
@@ -37,20 +42,24 @@ export default {
         ...mapState(useFormStore, ["hiddenClass"])
     },
     
-    mounted() {
-         fetch(`https://swapi.dev/api/people/${person[0]}`)
+    async mounted() {
+        this.loading = true;
+    try {
+        fetch(`https://swapi.dev/api/people/${person[0]}`)
             .then(response => response.json()) 
             .then(data => {
-                console.log(data)
-                this.cards = data; 
+                this.cards.push(data);
             })
-            
-            .catch(error => console.error('Error fetching data:', error));
             person.shift()
-            
-    },
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    } finally {
+        this.loading = false;
+
+    }
+},
     methods: {
-        editItem() {
+        editItem(card) {
             this.editingItem = {...card}
         }
     }

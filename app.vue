@@ -2,9 +2,10 @@
   <AppHeader/>
   <main>
     <section class="grid">
+      
       <AppCard class="first"/>
-      <!--<AppCard class="second"/>
-      <AppCard class="third"/>-->
+      <AppCard class="second"/>
+      <AppCard class="third"/>
       
         <EditForm/>
     </section>
