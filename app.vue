@@ -16,24 +16,13 @@
 import "./assets/css/main.css"
 import "./assets/css/base.css"
 
+
 import AppHeader from "@/components/Header.vue"
 import AppCard from "@/components/Card.vue"
 import EditForm from "@/components/Form.vue"
 
-
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import App from './app.vue'
-
-/*const pinia = createPinia()
-const app = createApp(App)
-
-app.use(pinia)
-app.mount('#app')*/
-
-
 export default {
-  name: "app",
+  name: "App",
   components: {
     AppHeader,
     AppCard,

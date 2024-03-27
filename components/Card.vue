@@ -33,6 +33,7 @@ export default {
         return {
           cards: [],
           loading: false,
+          formVisible: false,
          /* cardData: cardInfo,*/
         }
     },
@@ -60,6 +61,7 @@ export default {
 },
     methods: {
         editItem(card) {
+            this.$store.form.isOpen = true;
             this.editingItem = {...card}
         }
     }
