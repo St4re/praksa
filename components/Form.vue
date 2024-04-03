@@ -7,15 +7,15 @@
         <label for="mass">Mass: </label>
         <input v-model="editingItem.mass" id="mass" type="number" /><br>
         <label for="hair_color">Hair color: </label>
-        <input v-model="editingItem.hair_color" id="hair_color" type="text" /><br>
+        <input class="capitalize" v-model="editingItem.hair_color" id="hair_color" type="text" /><br>
         <label for="skin_color">Skin color: </label>
-        <input v-model="editingItem.skin_color" id="skin_color" type="text" /><br>
+        <input class="capitalize" v-model="editingItem.skin_color" id="skin_color" type="text" /><br>
         <label for="eye_color">Eye color: </label>
-        <input v-model="editingItem.eye_color" id="eye_color" type="text" /><br>
+        <input class="capitalize" v-model="editingItem.eye_color" id="eye_color" type="text" /><br>
         <label for="birth_year">Birth year: </label>
         <input v-model="editingItem.birth_year" id="birth_year" type="text" /><br>
         <label for="gender">Gender: </label>
-        <input v-model="editingItem.gender" id="gender" type="text" /><br>
+        <input class="capitalize" v-model="editingItem.gender" id="gender" type="text" /><br>
         <button @click.prevent="saveEdit" class="mr-4">Save</button>
         <button @click.prevent="cancelEdit">Cancel</button>
     </form>
@@ -40,19 +40,17 @@ export default {
         },
         editingItem() {
             const formStore = useFormStore();
-            return formStore.editingItem; // Directly use editingItem from the store
+            return formStore.editingItem;
         }
     },
     methods: {
         cancelEdit() {
             const formStore = useFormStore();
-            // Restore the original data
             formStore.restoreOriginalData();
             formStore.closeForm();
         },
         saveEdit() {
             const formStore = useFormStore();
-            // Save changes and clear original data
             formStore.saveChanges();
             formStore.clearOriginalData();
             formStore.closeForm();

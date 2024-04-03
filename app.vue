@@ -2,7 +2,8 @@
   <div>
     <AppHeader/>
     <main>
-      <section class="grid">
+      <div class="loader" v-if="loading">Loading...</div>
+      <section v-else class="grid">
         <AppCard v-if="cards[0]" :cardData="cards[0]" class="first"/>
         <AppCard v-if="cards[1]" :cardData="cards[1]" class="second"/>
         <AppCard v-if="cards[2]" :cardData="cards[2]" class="third"/>
@@ -28,9 +29,11 @@ export default {
   },
   setup() {
     const cards = ref([]);
+    const loading = ref(true);
 
     onMounted(async () => {
-      const person = [20, 4, 10]; // IDs of the persons to fetch
+
+      const person = [20, 4, 10]; // IDs of people
       const fetchPromises = person.map(id =>
         fetch(`https://swapi.dev/api/people/${id}`).then(response => response.json())
       );
@@ -38,13 +41,15 @@ export default {
       try {
         const results = await Promise.all(fetchPromises);
         cards.value = results;
+        loading.value = false;
       } catch (error) {
         console.error('Error fetching data:', error);
+        loading.value = false;
       }
     });
 
-    return { cards };
-  },
+    return { cards, loading };
+  }
   
 };
 </script>

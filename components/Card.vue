@@ -1,7 +1,6 @@
 <template>
-    <div class="loader" v-if="loading">Loading...</div>
+    <article class="card">
 
-    <article v-else class="card">
         <ul>
             <li>Name: <span>{{ cardData.name }}</span></li>
             <li>Height: <span>{{ cardData.height + " cm" }} </span></li>
@@ -27,15 +26,6 @@ import { useFormStore } from "@/stores/form.js"
 
 export default {
     name: "AppCard",
-    data() {
-        return {
-            person: [20, 4, 10],
-            cards: [],
-            loading: false,
-            formVisible: false,
-            /* cardData: cardInfo,*/
-        }
-    },
     props: {
         cardData: Object,
     },
@@ -55,9 +45,7 @@ export default {
         editItem(card) {
             const formStore = useFormStore();
             formStore.openForm(card);
-            // Assuming formStore holds the editable data and originalData
             formStore.setEditingItem(card);
-            // Make a deep copy of the data to revert to if cancel is pressed
             formStore.setOriginalData(JSON.parse(JSON.stringify(card)));
         },
 

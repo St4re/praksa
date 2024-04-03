@@ -24,15 +24,14 @@ export const useFormStore = defineStore("form", {
     restoreOriginalData() {
       if (this.originalData) {
         console.log(this.editingItem, this.originalData);
-        this.editingItem = this.originalData;
+        Object.assign(this.editingItem, this.originalData);
         console.log(this.editingItem);
 
         this.originalData = null;
       }
     },
     saveChanges() {
-      // Implement logic to save changes to `editingItem`
-      // This might involve sending a request to a server
+      // to do
     },
     clearOriginalData() {
       this.originalData = null;
