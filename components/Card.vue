@@ -2,7 +2,7 @@
     <article class="card">
 
         <ul>
-            <li>Name: <span>{{ cardData.name }}</span></li>
+            <li>Name: <span class="capitalize">{{ cardData.name }}</span></li>
             <li>Height: <span>{{ cardData.height + " cm" }} </span></li>
             <li>Mass: <span>{{ cardData.mass + " kg" }} </span></li>
             <li>Hair color: <span class="capitalize">{{ cardData.hair_color }}</span></li>
@@ -20,7 +20,6 @@ import "./assets/css/main.css"
 
 import { mapStores } from "pinia"
 import { mapState } from "pinia"
-import { cardInfo } from "@/assets/cardInfo.json"
 
 import { useFormStore } from "@/stores/form.js"
 

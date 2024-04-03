@@ -20,6 +20,8 @@ import AppCard from "@/components/Card.vue";
 import EditForm from "@/components/Form.vue";
 import { ref, onMounted } from "vue";
 
+import { useCardStore } from "@/stores/card.js"
+
 export default {
   name: "App",
   components: {
@@ -30,9 +32,9 @@ export default {
   setup() {
     const cards = ref([]);
     const loading = ref(true);
+    const cardStore = useCardStore();
 
     onMounted(async () => {
-
       const person = [20, 4, 10]; // IDs of people
       const fetchPromises = person.map(id =>
         fetch(`https://swapi.dev/api/people/${id}`).then(response => response.json())
@@ -40,6 +42,7 @@ export default {
 
       try {
         const results = await Promise.all(fetchPromises);
+        cardStore.setCards(results);
         cards.value = results;
         loading.value = false;
       } catch (error) {
@@ -49,7 +52,8 @@ export default {
     });
 
     return { cards, loading };
-  }
+  },
+  
   
 };
 </script>

@@ -23,10 +23,7 @@ export const useFormStore = defineStore("form", {
     },
     restoreOriginalData() {
       if (this.originalData) {
-        console.log(this.editingItem, this.originalData);
         Object.assign(this.editingItem, this.originalData);
-        console.log(this.editingItem);
-
         this.originalData = null;
       }
     },

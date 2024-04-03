@@ -1,7 +1,7 @@
 <template>
     <form v-if="isFormOpen" id="form" :class="hiddenClass">
         <label for="name">Name: </label>
-        <input v-model="editingItem.name" id="name" type="text" /><br>
+        <input class="capitalize" v-model="editingItem.name" id="name" type="text" /><br>
         <label for="height">Height: </label>
         <input v-model="editingItem.height" id="height" type="number" /><br>
         <label for="mass">Mass: </label>
@@ -24,12 +24,14 @@
 <script>
 import { mapState } from "pinia"
 import { useFormStore } from "@/stores/form.js"
+import { useCardStore } from "@/stores/card.js"
 
 export default {
 
     name: "EditForm",
     data() {
         return {
+            
         }
     },
     computed: {
@@ -54,6 +56,7 @@ export default {
             formStore.saveChanges();
             formStore.clearOriginalData();
             formStore.closeForm();
+            
         }
     }
 
