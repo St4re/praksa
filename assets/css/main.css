@@ -79,13 +79,13 @@ main {
   margin: 0 auto;
   filter: drop-shadow(0 0 100px #e3d61d66);
 }
-.first {
+.card-0 {
   background-image: url("assets/images/yoda.png");
 }
-.second {
+.card-1 {
   background-image: url("assets/images/vader.png");
 }
-.third {
+.card-2 {
   background-image: url("assets/images/obi.png");
 }
 button {
@@ -128,8 +128,8 @@ input {
   color: #e3d61d;
   font-size: 3em;
   text-transform: uppercase;
-  left:45%;
-  position:absolute;
+  left: 45%;
+  position: absolute;
 }
 
 @media screen and (max-width: 1280px) {

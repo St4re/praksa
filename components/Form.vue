@@ -31,8 +31,11 @@ export default {
     name: "EditForm",
     data() {
         return {
-            
+
         }
+    },
+    props: {
+        index: Number
     },
     computed: {
         ...mapState(useFormStore, ['hiddenClass']),
@@ -53,10 +56,12 @@ export default {
         },
         saveEdit() {
             const formStore = useFormStore();
-            formStore.saveChanges();
+            const cardStore = useCardStore();
+            console.log(this.index, formStore.editingItem)
+            cardStore.updateCards(this.index, formStore.editingItem)
             formStore.clearOriginalData();
             formStore.closeForm();
-            
+
         }
     }
 

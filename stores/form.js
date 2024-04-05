@@ -27,9 +27,6 @@ export const useFormStore = defineStore("form", {
         this.originalData = null;
       }
     },
-    saveChanges() {
-      // to do
-    },
     clearOriginalData() {
       this.originalData = null;
     },

@@ -4,9 +4,8 @@
     <main>
       <div class="loader" v-if="loading">Loading...</div>
       <section v-else class="grid">
-        <AppCard v-if="cards[0]" :cardData="cards[0]" class="first"/>
-        <AppCard v-if="cards[1]" :cardData="cards[1]" class="second"/>
-        <AppCard v-if="cards[2]" :cardData="cards[2]" class="third"/>
+        
+        <AppCard v-for="(card, index) in cards" :key="index" :cardData="card" :class="`card-${index}`"/>
         <EditForm/>
         
       </section>
@@ -35,6 +34,8 @@ export default {
     const cardStore = useCardStore();
 
     onMounted(async () => {
+
+     if (!localStorage.localCards) {
       const person = [20, 4, 10]; // IDs of people
       const fetchPromises = person.map(id =>
         fetch(`https://swapi.dev/api/people/${id}`).then(response => response.json())
@@ -43,15 +44,22 @@ export default {
       try {
         const results = await Promise.all(fetchPromises);
         cardStore.setCards(results);
+        console.log("results",results)
         cards.value = results;
         loading.value = false;
       } catch (error) {
         console.error('Error fetching data:', error);
         loading.value = false;
+      } } else {
+        console.log("else block",JSON.parse(localStorage.getItem('localCards')))
+        cardStore.setCards(JSON.parse(localStorage.getItem('localCards')));
+        cards.value = JSON.parse(localStorage.getItem('localCards'));
+        loading.value = false;
       }
-    });
 
+    });
     return { cards, loading };
+
   },
   
   
