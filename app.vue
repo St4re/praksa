@@ -44,16 +44,16 @@ export default {
       try {
         const results = await Promise.all(fetchPromises);
         cardStore.setCards(results);
-        console.log("results",results)
         cards.value = results;
         loading.value = false;
       } catch (error) {
         console.error('Error fetching data:', error);
         loading.value = false;
-      } } else {
-        console.log("else block",JSON.parse(localStorage.getItem('localCards')))
-        cardStore.setCards(JSON.parse(localStorage.getItem('localCards')));
-        cards.value = JSON.parse(localStorage.getItem('localCards'));
+      } 
+    } else {
+        const localCards = JSON.parse(localStorage.getItem('localCards'))
+        cardStore.setCards(localCards);
+        cards.value = localCards;
         loading.value = false;
       }
 

@@ -57,13 +57,10 @@ export default {
         saveEdit() {
             const formStore = useFormStore();
             const cardStore = useCardStore();
-            console.log(this.index, formStore.editingItem)
             cardStore.updateCards(this.index, formStore.editingItem)
             formStore.clearOriginalData();
             formStore.closeForm();
-
         }
     }
-
 }
 </script>
