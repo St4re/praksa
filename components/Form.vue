@@ -3,7 +3,7 @@
         <label for="name">Name: </label>
         <input class="capitalize" v-model="editingItem.name" id="name" type="text" /><br>
         <label for="height">Height: </label>
-        <input v-model="editingItem.height" id="height" type="number" /><br>
+        <input class="capitalize" v-model="editingItem.height" id="height" type="number" /><br>
         <label for="mass">Mass: </label>
         <input v-model="editingItem.mass" id="mass" type="number" /><br>
         <label for="hair_color">Hair color: </label>
@@ -22,41 +22,36 @@
 </template>
 
 <script>
-import { mapState } from "pinia"
+import { computed } from 'vue';
 import { useFormStore } from "@/stores/form.js"
 import { useCardStore } from "@/stores/card.js"
 
-export default {
 
-    name: "EditForm",
+export default {
+    name: "Form",
     props: {
         index: Number //index of the card being edited
     },
-    computed: {
-        ...mapState(useFormStore, ['hiddenClass']),
-        isFormOpen() {
-            const formStore = useFormStore(); 
-            return formStore.isOpen; //gets the state value of isOpen
-        },
-        editingItem() {
-            const formStore = useFormStore();
-            return formStore.editingItem; //gets the state value of editingItem
-        }
-    },
-    methods: {
-        cancelEdit() {
-            //on cancel button triggers these functions from form.js
-            const formStore = useFormStore();
+    setup(props) {
+        const formStore = useFormStore();
+        const cardStore = useCardStore();
+
+        const isFormOpen = computed(() => formStore.isOpen); //gets the state value of isOpen
+        const editingItem = computed(() => formStore.editingItem); //gets the state value of editingItem
+
+        const cancelEdit = () => {
             formStore.restoreOriginalData(); //sets back original data
             formStore.closeForm(); // closes form
-        },
-        saveEdit() {
-            //on save button triggers these functions from form.js and card.js
-            const formStore = useFormStore();
-            const cardStore = useCardStore();
-            cardStore.updateCards(this.index, formStore.editingItem) //updates the card and updates data in state and local storage 
+        };
+
+        const saveEdit = () => {
+            cardStore.updateCards(props.index, formStore.editingItem); //updates the card and updates data in state and local storage
             formStore.closeForm(); //closes form
-        }
+        };
+
+        const hiddenClass = computed(() => !isFormOpen.value ? "hidden" : "");
+
+        return { isFormOpen, editingItem, cancelEdit, saveEdit, hiddenClass };
     }
 }
 </script>

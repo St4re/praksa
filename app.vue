@@ -5,8 +5,8 @@
       <div class="loader" v-if="loading">Loading...</div>
       <section v-else class="grid">
         
-        <AppCard v-for="(card, index) in cards" :key="index" :cardData="card" :class="`card-${index}`"/>
-        <EditForm/>
+        <Card v-for="(card, index) in cards" :key="index" :cardData="card" :class="`card-${index}`"/>
+        <Form/>
         
       </section>
     </main>
@@ -15,18 +15,19 @@
 
 <script>
 import AppHeader from "@/components/Header.vue";
-import AppCard from "@/components/Card.vue";
-import EditForm from "@/components/Form.vue";
-import { ref, onMounted } from "vue";
+import Card from "@/components/Card.vue";
+import Form from "@/components/Form.vue";
 
+import { ref, onMounted } from "vue";
 import { useCardStore } from "@/stores/card.js"
 
 export default {
   name: "App",
   components: {
     AppHeader,
-    AppCard,
-    EditForm,
+    Card,
+    Form,
+    
   },
   setup() {
     const cards = ref([]); // constant array for list of cards
