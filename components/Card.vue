@@ -1,6 +1,5 @@
 <template>
     <article class="card">
-
         <ul>
             <li>Name: <span class="capitalize">{{ cardData.name }}</span></li>
             <li>Height: <span>{{ cardData.height + " cm" }} </span></li>
@@ -17,38 +16,23 @@
 
 <script>
 import "./assets/css/main.css"
-
 import { mapStores } from "pinia"
-import { mapState } from "pinia"
-
 import { useFormStore } from "@/stores/form.js"
 
 export default {
     name: "AppCard",
     props: {
-        cardData: Object,
+        cardData: Object, //get card data from parent App.vue as an object
     },
     computed: {
         ...mapStores(useFormStore),
-        ...mapState(useFormStore, ["hiddenClass"]),
-
-        editingItem() {
-            return useFormStore().editingItem;
-
-        }
     },
-
-
     methods: {
-
         editItem(card) {
+            // triggers when clicking the edit button on the card
             const formStore = useFormStore();
-            formStore.openForm(card);
-            formStore.setEditingItem(card);
-            formStore.setOriginalData(JSON.parse(JSON.stringify(card)));
+            formStore.openForm(card); // opens the editing form with the cards values
         },
-
-
     }
 }
 </script>

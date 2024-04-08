@@ -6,18 +6,12 @@ export const useCardStore = defineStore("cardStore", {
   }),
   actions: {
     setCards(newCards) {
-      this.cardsPinia = newCards;
-      localStorage.setItem("localCards", JSON.stringify(this.cardsPinia));
+      this.cardsPinia = newCards; //sets the current cards in the state
+      localStorage.setItem("localCards", JSON.stringify(this.cardsPinia)); //sets the current cards in the localStorage
     },
     updateCards(index, newCard) {
-      this.cardsPinia[index] = newCard;
-      this.setCards(this.cardsPinia);
-    },
-    initialize() {
-      const storedCards = localStorage.getItem("localCards");
-      if (storedCards) {
-        this.cardsPinia = JSON.parse(storedCards);
-      }
+      this.cardsPinia[index] = newCard; //update the current edited card in the state with new data
+      this.setCards(this.cardsPinia); // updates the state and localStorage with new cards
     },
   },
 });

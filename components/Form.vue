@@ -29,37 +29,33 @@ import { useCardStore } from "@/stores/card.js"
 export default {
 
     name: "EditForm",
-    data() {
-        return {
-
-        }
-    },
     props: {
-        index: Number
+        index: Number //index of the card being edited
     },
     computed: {
         ...mapState(useFormStore, ['hiddenClass']),
         isFormOpen() {
-            const formStore = useFormStore();
-            return formStore.isOpen;
+            const formStore = useFormStore(); 
+            return formStore.isOpen; //gets the state value of isOpen
         },
         editingItem() {
             const formStore = useFormStore();
-            return formStore.editingItem;
+            return formStore.editingItem; //gets the state value of editingItem
         }
     },
     methods: {
         cancelEdit() {
+            //on cancel button triggers these functions from form.js
             const formStore = useFormStore();
-            formStore.restoreOriginalData();
-            formStore.closeForm();
+            formStore.restoreOriginalData(); //sets back original data
+            formStore.closeForm(); // closes form
         },
         saveEdit() {
+            //on save button triggers these functions from form.js and card.js
             const formStore = useFormStore();
             const cardStore = useCardStore();
-            cardStore.updateCards(this.index, formStore.editingItem)
-            formStore.clearOriginalData();
-            formStore.closeForm();
+            cardStore.updateCards(this.index, formStore.editingItem) //updates the card and updates data in state and local storage 
+            formStore.closeForm(); //closes form
         }
     }
 }
