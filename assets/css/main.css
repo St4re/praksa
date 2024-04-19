@@ -60,15 +60,6 @@ main {
   background-repeat: no-repeat;
   padding-bottom: 15%;
 }
-.card ul li {
-  color: white;
-  font-size: 1.1em;
-  margin-left: 10%;
-  font-weight: 300;
-}
-.card ul li span {
-  font-weight: 600;
-}
 .grid {
   width: 43%;
   height: 70%;

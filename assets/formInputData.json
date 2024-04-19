@@ -1,0 +1,59 @@
+ [
+    {
+      "label": "Name",
+      "key": "name",
+      "id": "name",
+      "type": "text",
+      "capitalize": true
+    },
+    {
+      "label": "Height",
+      "key": "height",
+      "id": "height",
+      "type": "number",
+      "capitalize": false
+    },
+    {
+      "label": "Mass",
+      "key": "mass",
+      "id": "mass",
+      "type": "number",
+      "capitalize": false
+    },
+    {
+      "label": "Hair color",
+      "key": "hair_color",
+      "id": "hair_color",
+      "type": "text",
+      "capitalize": true
+    },
+    {
+      "label": "Skin color",
+      "key": "skin_color",
+      "id": "skin_color",
+      "type": "text",
+      "capitalize": true
+    },
+    {
+      "label": "Eye color",
+      "key": "eye_color",
+      "id": "eye_color",
+      "type": "text",
+      "capitalize": true
+    },
+    {
+      "label": "Birth year",
+      "key": "birth_year",
+      "id": "birth_year",
+      "type": "text",
+      "capitalize": true
+    },
+    {
+      "label": "Gender",
+      "key": "gender",
+      "id": "gender",
+      "type": "text",
+      "capitalize": true
+    }
+  ]
+
