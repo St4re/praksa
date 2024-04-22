@@ -1,19 +1,12 @@
 <template>
   <article class="card">
-    <slot name="name"></slot>
-    <slot name="height"></slot>
-    <slot name="mass"></slot>
-    <slot name="hair_color"></slot>
-    <slot name="skin_color"></slot>
-    <slot name="eye_color"></slot>
-    <slot name="birth_year"></slot>
-    <slot name="gender"></slot>
-    <slot name="button"></slot>
+    <slot name="cardHeader"></slot>
+    <slot name="cardBody"></slot>
+    <slot name="cardFooter"></slot>
   </article>
 </template>
 
 <script>
-import "./assets/css/main.css";
 
 </script>
 <style scoped lang="scss">

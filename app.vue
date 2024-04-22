@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <AppHeader />
     <main>
       <div class="loader" v-if="loading">Loading...</div>
@@ -11,47 +10,33 @@
           :cardData="card"
           :class="`card-${index}`"
         >
-          <template #name>
+          <template #cardBody>
             <li>
               Name: <span class="capitalize">{{ card.name }}</span>
             </li>
-          </template>
-          <template #height>
             <li>
               Height: <span>{{ `${card.height} cm` }}</span>
             </li>
-          </template>
-          <template #mass>
             <li>
               Mass: <span>{{ `${card.mass} kg` }}</span>
             </li>
-          </template>
-          <template #hair_color>
             <li>
               Hair color: <span class="capitalize">{{ card.hair_color }}</span>
             </li>
-          </template>
-          <template #skin_color>
             <li>
               Skin color: <span class="capitalize">{{ card.skin_color }}</span>
             </li>
-          </template>
-          <template #eye_color>
             <li>
               Eye color: <span class="capitalize">{{ card.eye_color }}</span>
             </li>
-          </template>
-          <template #birth_year>
             <li>
               Birth year: <span class="capitalize">{{ card.birth_year }}</span>
             </li>
-          </template>
-          <template #gender>
             <li>
               Gender: <span class="capitalize">{{ card.gender }}</span>
             </li>
           </template>
-          <template #button>
+          <template #cardFooter>
             <ReusableButton @click="editItem(card)">Edit</ReusableButton>
           </template>
         </Card>
@@ -178,7 +163,6 @@ main {
   }
 }
 @media screen and (max-width: 1024px) {
-
   main {
     height: 85vh;
     align-items: center;
@@ -192,7 +176,6 @@ main {
   }
 }
 @media screen and (max-width: 768px) {
-
   main {
     background-color: black;
     height: 120vh;
@@ -204,7 +187,6 @@ main {
     height: 90%;
     padding-top: 5%;
   }
-
 }
 
 @media screen and (max-width: 480px) {
@@ -219,9 +201,8 @@ main {
     display: block;
     padding-top: 30px;
   }
-
-  }
-  @media screen and (max-width: 400px) {
+}
+@media screen and (max-width: 400px) {
   main {
     height: 190vh;
   }
