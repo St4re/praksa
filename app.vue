@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <AppHeader />
     <main>
       <div class="loader" v-if="loading">Loading...</div>
@@ -115,3 +116,114 @@ export default {
   },
 };
 </script>
+<style scoped lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+}
+
+main {
+  background-color: black;
+  height: 85vh;
+  align-items: center;
+  display: flex;
+}
+
+.grid {
+  width: 43%;
+  height: 70%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+  justify-items: center;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 100px #e3d61d66);
+}
+.loader {
+  color: #e3d61d;
+  font-size: 3em;
+  text-transform: uppercase;
+  left: 45%;
+  position: absolute;
+}
+
+.card-0 {
+  background-image: url("assets/images/yoda.png");
+}
+.card-1 {
+  background-image: url("assets/images/vader.png");
+}
+.card-2 {
+  background-image: url("assets/images/obi.png");
+}
+
+@media screen and (max-width: 1280px) {
+  main {
+    height: 85vh;
+    align-items: center;
+    display: flex;
+  }
+  .grid {
+    width: 60%;
+    height: 85%;
+    display: grid;
+  }
+}
+@media screen and (max-width: 1024px) {
+
+  main {
+    height: 85vh;
+    align-items: center;
+    display: flex;
+  }
+  .grid {
+    width: 85%;
+    height: 50%;
+    display: grid;
+    margin-bottom: 100px;
+  }
+}
+@media screen and (max-width: 768px) {
+
+  main {
+    background-color: black;
+    height: 120vh;
+    align-items: center;
+    display: block;
+  }
+  .grid {
+    width: 90%;
+    height: 90%;
+    padding-top: 5%;
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+  main {
+    height: 220vh;
+    align-items: center;
+    display: block;
+  }
+  .grid {
+    width: 60%;
+    height: 33%;
+    display: block;
+    padding-top: 30px;
+  }
+
+  }
+  @media screen and (max-width: 400px) {
+  main {
+    height: 190vh;
+  }
+}
+</style>

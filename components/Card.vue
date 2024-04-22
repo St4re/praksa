@@ -14,29 +14,22 @@
 
 <script>
 import "./assets/css/main.css";
-import { useFormStore } from "@/stores/form.js";
 
-export default {
-  name: "Card",
-  props: {
-    cardData: Object, //get card data from parent App.vue as an object
-  },
-  setup(props) {
-    const formStore = useFormStore();
-
-    const editItem = () => {
-      formStore.openForm(props.cardData); // opens the editing form with the cards values
-    };
-
-    return {
-      editItem,
-    };
-  },
-};
 </script>
-<style lang="scss">
+<style scoped lang="scss">
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-bottom: 15%;
+}
 
-.card li {
+:deep(li) {
   color: white;
   font-size: 1.1em;
   margin-left: 10%;
@@ -44,7 +37,39 @@ export default {
   list-style: none;
 }
 
-.card li span {
+:deep(span) {
   font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    ul {
+      li {
+        font-size: 0.9em;
+        margin-left: 8%;
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+
+  .card {
+    padding-bottom: 7%;
+    margin-bottom: 7%;
+  }
+
+  :deep(li) {
+    font-size: 0.9em;
+    margin-left: 8%;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  :deep(li) {
+    font-size: 0.8em;
+  }
 }
 </style>
