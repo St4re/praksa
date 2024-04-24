@@ -9,6 +9,8 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
     'nuxt-module-eslint-config',
+    'nuxt-primevue',
+
   ],
 
   experimental: {
@@ -72,4 +74,7 @@ export default defineNuxtConfig({
   eslintConfig: {
     setup: false,
   },
+  primevue: {
+    /* Options */
+},
 })
