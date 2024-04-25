@@ -1,11 +1,9 @@
 <template>
-  
-
-    <article class="card">
-      <slot name="cardHeader"></slot>
-      <slot name="cardBody"></slot>
-      <slot name="cardFooter"></slot>
-    </article>
+  <article class="card">
+    <slot name="cardHeader"></slot>
+    <slot name="cardBody"></slot>
+    <slot name="cardFooter"></slot>
+  </article>
 
 </template>
 
@@ -46,7 +44,6 @@
       }
     }
   }
-
 }
 
 @media screen and (max-width: 480px) {

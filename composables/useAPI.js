@@ -1,5 +1,3 @@
-import { ref } from "vue";
-
 export default function useAPI() {
   const fetchData = async (url) => {
     try {

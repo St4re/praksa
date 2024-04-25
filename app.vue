@@ -2,18 +2,12 @@
   <div>
     <AppHeader />
     <main>
-      <section  class="grid">
+      <section class="grid">
         <CardSkeleton v-if="isLoading" />
         <CardSkeleton v-if="isLoading" />
         <CardSkeleton v-if="isLoading" />
-        
-        <Card
-          v-else
-          v-for="(card, index) in cards"
-          :key="index"
-          :cardData="card"
-          :class="`card-${index}`"
-        >
+
+        <Card v-else v-for="(card, index) in cards" :key="index" :cardData="card" :class="`card-${index}`">
           <template #cardBody>
 
             <li>
@@ -144,6 +138,7 @@ main {
   margin: 0 auto;
   filter: drop-shadow(0 0 100px #e3d61d66);
 }
+
 .loader {
   color: #e3d61d;
   font-size: 3em;
@@ -155,58 +150,56 @@ main {
 .card-0 {
   background-image: url("assets/images/yoda.png");
 }
+
 .card-1 {
   background-image: url("assets/images/vader.png");
 }
+
 .card-2 {
   background-image: url("assets/images/obi.png");
 }
 
 @media screen and (max-width: 1280px) {
-  main {
-    height: 85vh;
-    align-items: center;
-    display: flex;
-  }
   .grid {
     width: 60%;
     height: 85%;
     display: grid;
   }
 }
+
 @media screen and (max-width: 1024px) {
   main {
-    height: 85vh;
-    align-items: center;
-    display: flex;
+    height: 90vh;
   }
+
   .grid {
     width: 85%;
-    height: 50%;
+    height: 40%;
     display: grid;
-    margin-bottom: 100px;
   }
 }
+
 @media screen and (max-width: 768px) {
   main {
     background-color: black;
-    height: 120vh;
+    height: 90vh;
     align-items: center;
     display: block;
   }
+
   .grid {
     width: 90%;
     height: 90%;
-    padding-top: 5%;
   }
 }
 
 @media screen and (max-width: 480px) {
   main {
-    height: 220vh;
+    height: 150vh;
     align-items: center;
     display: block;
   }
+
   .grid {
     width: 60%;
     height: 33%;
@@ -214,9 +207,10 @@ main {
     padding-top: 30px;
   }
 }
+
 @media screen and (max-width: 400px) {
   main {
-    height: 190vh;
+    height: 150vh;
   }
 }
 </style>
