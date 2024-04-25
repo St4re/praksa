@@ -26,6 +26,7 @@
     border-radius: 10px;
     background-color: #fff;
     padding-bottom: 15%;
+    animation: boxFade 1.5s ease-in-out infinite;
 }
 
 .line {
@@ -65,6 +66,21 @@
 
     100% {
         background-color: #EDF2F7;
+    }
+}
+
+@keyframes boxFade {
+    0% {
+        background-color: #fff;
+
+    }
+
+    50% {
+        background-color: #EDF2F7;
+    }
+
+    100% {
+        background-color: #fff;
     }
 }
 

@@ -59,11 +59,16 @@ nav {
   }
 
   nav {
+    img {
+      max-width: 80%;
+      height: auto;
+    }
+
     ul {
       padding: 0 25%;
 
       li {
-        font-size: 1.2em;
+        font-size: 1em;
         padding-right: 5px;
       }
     }
@@ -71,12 +76,21 @@ nav {
 }
 
 @media screen and (max-width: 1024px) {
+  header {
+    height: 10vw;
+  }
+
   nav {
+    img {
+      max-width: 60%;
+      height: auto;
+    }
+
     ul {
-      padding: 0 15%;
+      padding: 0 20%;
 
       li {
-        font-size: 1.5em;
+        font-size: 1em;
       }
     }
   }
@@ -90,10 +104,10 @@ nav {
     }
 
     ul {
-      padding: 0 22%;
+      padding: 0 20%;
 
       li {
-        font-size: 1em;
+        font-size: 0.8em;
         padding-right: 20px;
       }
     }
@@ -102,15 +116,20 @@ nav {
 
 @media screen and (max-width: 480px) {
   header {
-    height: 10vh;
+    height: 8vh;
   }
 
   nav {
+    img {
+      max-width: 80%;
+      height: auto;
+    }
+
     ul {
       padding: 0 8%;
 
       li {
-        font-size: 1em;
+        font-size: 0.8em;
         padding-right: 12px;
       }
     }
@@ -119,6 +138,11 @@ nav {
 
 @media screen and (max-width: 400px) {
   nav {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
     ul {
       li {
         font-size: 0.8em;
