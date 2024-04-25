@@ -2,15 +2,20 @@
   <div>
     <AppHeader />
     <main>
-      <div class="loader" v-if="loading">Loading...</div>
-      <section v-else class="grid">
+      <section  class="grid">
+        <CardSkeleton v-if="isLoading" />
+        <CardSkeleton v-if="isLoading" />
+        <CardSkeleton v-if="isLoading" />
+        
         <Card
+          v-else
           v-for="(card, index) in cards"
           :key="index"
           :cardData="card"
           :class="`card-${index}`"
         >
           <template #cardBody>
+
             <li>
               Name: <span class="capitalize">{{ card.name }}</span>
             </li>
@@ -35,11 +40,15 @@
             <li>
               Gender: <span class="capitalize">{{ card.gender }}</span>
             </li>
+
           </template>
+
           <template #cardFooter>
             <ReusableButton @click="editItem(card)">Edit</ReusableButton>
           </template>
+
         </Card>
+
         <Form />
       </section>
     </main>
@@ -51,11 +60,13 @@ import AppHeader from "@/components/Header.vue";
 import Card from "@/components/Card.vue";
 import Form from "@/components/Form.vue";
 import ReusableButton from "@/components/ReusableButton.vue";
+import CardSkeleton from "@/components/CardSkeleton.vue";
 
 import { ref, onMounted } from "vue";
 import { useCardStore } from "@/stores/card.js";
 import { useFormStore } from "@/stores/form.js";
 import useAPI from "@/composables/useAPI.js";
+
 
 export default {
   name: "App",
@@ -63,10 +74,11 @@ export default {
     AppHeader,
     Card,
     Form,
+    CardSkeleton,
   },
   setup() {
     const cards = ref([]); // constant array for list of cards
-    const loading = ref(true); //boolean for loader to show before fetching
+    const isLoading = ref(true); //boolean for loader to show before fetching
     const cardStore = useCardStore();
     const formStore = useFormStore();
     const { fetchData } = useAPI();
@@ -90,14 +102,14 @@ export default {
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        loading.value = false; // Turn off loader
+        isLoading.value = false; // Turn off loader
       }
     });
 
     const editItem = (card) => {
       formStore.openForm(card); // opens the editing form with the cards values
     };
-    return { cards, loading, editItem };
+    return { cards, isLoading, editItem };
   },
 };
 </script>

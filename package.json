@@ -30,6 +30,7 @@
     "eslint-ts-patch": "^8.56.0-0",
     "nuxt": "^3.9.3",
     "nuxt-module-eslint-config": "^0.0.2",
+    "nuxt-primevue": "^0.3.1",
     "pinia": "^2.1.7",
     "postcss": "^8.4.35",
     "sass": "^1.75.0",
@@ -39,6 +40,12 @@
     "vue-tsc": "^1.8.27"
   },
   "dependencies": {
-    "@vueuse/core": "^10.9.0"
+    "@chakra-ui/skeleton": "^2.1.0",
+    "@chakra-ui/vue": "^0.13.1",
+    "@emotion/core": "^11.0.0",
+    "@emotion/css": "^11.11.2",
+    "@emotion/styled": "^11.11.5",
+    "@vueuse/core": "^10.9.0",
+    "primevue": "^3.51.0"
   }
 }

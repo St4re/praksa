@@ -5,10 +5,7 @@
       <button @click.prevent="saveEdit" class="mr-4">Save</button>
       <button @click.prevent="cancelEdit">Cancel</button>
     </div>
-
-
   </form>
-
 </template>
 
 <script>
@@ -18,8 +15,6 @@ import { useCardStore } from "@/stores/card.js"
 
 import FormInputs from "@/components/FormInputs.vue";
 import formInputData from "@/assets/formInputData.json"
-
-
 
 export default {
   name: "Form",
