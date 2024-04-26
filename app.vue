@@ -3,9 +3,13 @@
     <AppHeader />
     <main>
       <section class="grid">
-        <CardSkeleton v-if="isLoading" v-for="number in 3" />
-        <Card v-else v-for="(card, index) in cards" :key="index" :class="`card-${index}`">
+        <CardSkeleton v-if="isLoading" />
+        <CardSkeleton v-if="isLoading" />
+        <CardSkeleton v-if="isLoading" />
+
+        <Card v-else v-for="(card, index) in cards" :key="index" :cardData="card" :class="`card-${index}`">
           <template #cardBody>
+
             <li>
               Name: <span class="capitalize">{{ card.name }}</span>
             </li>
@@ -30,11 +34,15 @@
             <li>
               Gender: <span class="capitalize">{{ card.gender }}</span>
             </li>
+
           </template>
+
           <template #cardFooter>
             <ReusableButton @click="editItem(card)">Edit</ReusableButton>
           </template>
+
         </Card>
+
         <Form />
       </section>
     </main>
@@ -52,6 +60,7 @@ import { ref, onMounted } from "vue";
 import { useCardStore } from "@/stores/card.js";
 import { useFormStore } from "@/stores/form.js";
 import useAPI from "@/composables/useAPI.js";
+
 
 export default {
   name: "App",

@@ -1,11 +1,14 @@
 <template>
     <div class="box">
-        <div class="line" v-for="number in 8">
-            <Skeleton fill />
-        </div>
-        <div class="fakeBtn">
-            <Skeleton fill />
-        </div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="fakeBtn">Edit</div>
     </div>
 </template>
 
@@ -23,36 +26,45 @@
     border-radius: 10px;
     background-color: #fff;
     padding-bottom: 15%;
-    animation: boxFade 1.5s ease-in-out infinite;
 }
 
 .line {
-    height: 4%;
+    background-color: #EDF2F7;
+    color: white;
+    height: 20px;
     margin-left: 10%;
     margin-bottom: 2%;
     width: 60%;
-    border-radius: 7px;
+    animation: fade 1.5s ease-in-out infinite;
+    opacity: 0.7;
+    border-radius: 3px;
 }
 
 .fakeBtn {
-    width: 50%;
-    height: 8%;
+    background-color: #EDF2F7;
+    padding: 5px 45px;
     border-radius: 7px;
+    font-weight: bold;
+    font-size: 1.3em;
     margin: 0 auto;
     margin-top: 12%;
+    color: #00000000;
+    animation: fade 1.5s ease-in-out infinite;
+    opacity: 0.7;
 }
 
-@keyframes boxFade {
+@keyframes fade {
     0% {
-        background-color: #fff;
+        background-color: #EDF2F7;
+
     }
 
     50% {
-        background-color: #EDF2F7;
+        background-color: #A0AEC0;
     }
 
     100% {
-        background-color: #fff;
+        background-color: #EDF2F7;
     }
 }
 
@@ -64,8 +76,7 @@
 
 @media screen and (max-width: 768px) {
     .fakeBtn {
-        height:10%;
-        width:40%;
+        padding: 5px 25px;
     }
 
     .line {
@@ -78,16 +89,17 @@
         font-size: 1.1em;
         margin-top: 8%;
     }
-    .box {
-        padding-bottom: 7%;
-        margin-bottom: 7%;
-    }
 }
 
 @media screen and (max-width: 400px) {
     .fakeBtn {
-        height:12%;
-        width:40%;
+        padding: 5px 23px;
+        font-size: 0.9em;
+    }
+
+    .box {
+        padding-bottom: 7%;
+        margin-bottom: 7%;
     }
 }
 </style>
