@@ -1,14 +1,11 @@
 <template>
     <div class="box">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="fakeBtn">Edit</div>
+        <div class="line" v-for="number in 8">
+            <Skeleton fill />
+        </div>
+        <div class="fakeBtn">
+            <Skeleton fill />
+        </div>
     </div>
 </template>
 
@@ -30,49 +27,24 @@
 }
 
 .line {
-    background-color: #EDF2F7;
-    color: white;
-    height: 20px;
+    height: 4%;
     margin-left: 10%;
     margin-bottom: 2%;
     width: 60%;
-    animation: fade 1.5s ease-in-out infinite;
-    opacity: 0.7;
-    border-radius: 3px;
+    border-radius: 7px;
 }
 
 .fakeBtn {
-    background-color: #EDF2F7;
-    padding: 5px 45px;
+    width: 50%;
+    height: 8%;
     border-radius: 7px;
-    font-weight: bold;
-    font-size: 1.3em;
     margin: 0 auto;
     margin-top: 12%;
-    color: #00000000;
-    animation: fade 1.5s ease-in-out infinite;
-    opacity: 0.7;
-}
-
-@keyframes fade {
-    0% {
-        background-color: #EDF2F7;
-
-    }
-
-    50% {
-        background-color: #A0AEC0;
-    }
-
-    100% {
-        background-color: #EDF2F7;
-    }
 }
 
 @keyframes boxFade {
     0% {
         background-color: #fff;
-
     }
 
     50% {
@@ -92,7 +64,8 @@
 
 @media screen and (max-width: 768px) {
     .fakeBtn {
-        padding: 5px 25px;
+        height:10%;
+        width:40%;
     }
 
     .line {
@@ -105,17 +78,16 @@
         font-size: 1.1em;
         margin-top: 8%;
     }
+    .box {
+        padding-bottom: 7%;
+        margin-bottom: 7%;
+    }
 }
 
 @media screen and (max-width: 400px) {
     .fakeBtn {
-        padding: 5px 23px;
-        font-size: 0.9em;
-    }
-
-    .box {
-        padding-bottom: 7%;
-        margin-bottom: 7%;
+        height:12%;
+        width:40%;
     }
 }
 </style>
