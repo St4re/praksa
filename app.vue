@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AppHeader />
+    <Header />
     <main>
       <div class="background">
       <Flex alignItems="center" justifyContent="center" flexWrap="wrap" gap="20">
@@ -36,7 +36,8 @@
             <ReusableButton @click="editItem(card)">Edit</ReusableButton>
           </template>
         </Card>
-        <Form />
+        <!--<Form />-->
+        <Dialog/>
     </Flex>
     </div>
     </main>
@@ -44,13 +45,17 @@
 </template>
 
 <script>
-import AppHeader from "@/components/Header.vue";
+import Header from "@/components/Header.vue";
 import Card from "@/components/Card.vue";
 import Form from "@/components/Form.vue";
 import ReusableButton from "@/components/ReusableButton.vue";
 import CardSkeleton from "@/components/CardSkeleton.vue";
 import Flex from "@/components/Flex.vue"
 import Spacer from "@/components/Spacer.vue"
+import Dialog from "@/components/Dialog/Dialog.vue"
+import DialogTitle from "@/components/Dialog/DialogTitle.vue"
+import DialogPanel from "@/components/Dialog/DialogPanel.vue"
+import DialogDescription from "@/components/Dialog/DialogDescription.vue"
 
 import { ref, onMounted } from "vue";
 import { useCardStore } from "@/stores/card.js";
@@ -60,12 +65,16 @@ import useAPI from "@/composables/useAPI.js";
 export default {
   name: "App",
   components: {
-    AppHeader,
+    Header,
     Card,
     Form,
     CardSkeleton,
     Flex,
     Spacer,
+    Dialog,
+    DialogTitle,
+    DialogPanel,
+    DialogDescription
   },
   setup() {
     const cards = ref([]); // constant array for list of cards

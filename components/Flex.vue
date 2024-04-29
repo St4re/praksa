@@ -29,7 +29,6 @@ export default {
             flexGrow: props.flexGrow,
             flexShrink: props.flexShrink
         }));
-        console.log(flexStyles.value)
         return {
             flexStyles
         };
