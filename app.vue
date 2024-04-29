@@ -2,7 +2,8 @@
   <div>
     <AppHeader />
     <main>
-      <section class="grid">
+      <div class="background">
+      <Flex alignItems="center" justifyContent="center" flexWrap="wrap" gap="20" flexDirection="row" flexGrow="1">
         <CardSkeleton v-if="isLoading" v-for="number in 3" />
         <Card v-else v-for="(card, index) in cards" :key="index" :class="`card-${index}`">
           <template #cardBody>
@@ -36,7 +37,15 @@
           </template>
         </Card>
         <Form />
-      </section>
+    </Flex>
+    </div>
+    <Flex>
+    <div class="bg-orange" style="width:500px;height:50px;"></div>
+    <Spacer/>
+    <div class="bg-orange" style="width:200px;height:50px;"></div>
+    <Spacer/>
+    <div class="bg-orange" style="width:300px;height:50px;"></div>
+    </Flex>
     </main>
   </div>
 </template>
@@ -47,6 +56,8 @@ import Card from "@/components/Card.vue";
 import Form from "@/components/Form.vue";
 import ReusableButton from "@/components/ReusableButton.vue";
 import CardSkeleton from "@/components/CardSkeleton.vue";
+import Flex from "@/components/Flex.vue"
+import Spacer from "@/components/Spacer.vue"
 
 import { ref, onMounted } from "vue";
 import { useCardStore } from "@/stores/card.js";
@@ -60,6 +71,8 @@ export default {
     Card,
     Form,
     CardSkeleton,
+    Flex,
+    Spacer,
   },
   setup() {
     const cards = ref([]); // constant array for list of cards
@@ -110,15 +123,21 @@ export default {
 body {
   margin: 0 auto;
   font-family: "Roboto", sans-serif;
+  background-color: black;
+
 }
 
 main {
   background-color: black;
   height: 85vh;
-  align-items: center;
-  display: flex;
-}
 
+}
+.background {
+  display:flex;
+  filter: drop-shadow(0 0 100px #e3d61d66);
+  height:100%;
+  width:100%;
+}
 .grid {
   width: 43%;
   height: 70%;
@@ -127,7 +146,6 @@ main {
   grid-column-gap: 20px;
   justify-items: center;
   margin: 0 auto;
-  filter: drop-shadow(0 0 100px #e3d61d66);
 }
 
 .loader {
