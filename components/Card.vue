@@ -15,14 +15,17 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  width: 270px;
-  height: 580px;
-  //width:15vw;
-  //height:62vh;
+  min-width: 270px;
+  max-width:270px;
+  min-height: 350px;
+  max-height: 550px;
+  width:15vw;
+  height:62vh;
   border-radius: 10px;
   background-size: cover;
   background-repeat: no-repeat;
-  padding-bottom: 40px;
+  padding-bottom: 5%;
+  flex-grow:1;
 }
 
 :deep(li) {
@@ -35,36 +38,5 @@
 
 :deep(span) {
   font-weight: 600;
-}
-
-@media screen and (max-width: 768px) {
-  .card {
-    ul {
-      li {
-        font-size: 0.9em;
-        margin-left: 8%;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 480px) {
-
-  .card {
-    padding-bottom: 7%;
-    margin-bottom: 7%;
-  }
-
-  :deep(li) {
-    font-size: 0.9em;
-    margin-left: 8%;
-  }
-
-}
-
-@media screen and (max-width: 400px) {
-  :deep(li) {
-    font-size: 0.8em;
-  }
 }
 </style>

@@ -20,7 +20,7 @@ export default {
 </script>
 <style scoped lang="scss">
 header {
-  height: 15vh;
+  height: 10vh;
   overflow: hidden;
 }
 
@@ -31,7 +31,6 @@ nav {
   img {
     max-width: 100%;
     height: auto;
-
   }
 
   ul {
@@ -54,10 +53,6 @@ nav {
 }
 
 @media screen and (max-width: 1280px) {
-  header {
-    height: 15vh;
-  }
-
   nav {
     img {
       max-width: 80%;
@@ -115,10 +110,6 @@ nav {
 }
 
 @media screen and (max-width: 480px) {
-  header {
-    height: 8vh;
-  }
-
   nav {
     img {
       max-width: 80%;
