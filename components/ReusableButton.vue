@@ -31,24 +31,9 @@ button {
     font-size: 1.2em;
   }
 }
-
-@media screen and (max-width: 768px) {
-  button {
-    padding: 5px 25px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  button {
-    font-size: 1.1em;
-    margin-top: 8%;
-  }
-}
-
 @media screen and (max-width: 400px) {
   button {
-    padding: 5px 23px;
-    font-size: 0.9em;
+    font-size: 1em;
   }
 }
 </style>

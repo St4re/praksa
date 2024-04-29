@@ -6,44 +6,20 @@
 
 <script>
 import { computed } from "vue";
+
 export default {
     props: {
-        flexDirection: {
-            type: String,
-            default: "row",
-        },
-        flexWrap: {
-            type: String,
-            default: "nowrap"
-        },
-        flexBasis: {
-            type: String,
-            default: "auto"
-        },
-        justifyContent: {
-            type: String,
-            default: "flex-start"
-        },
-        alignItems: {
-            type: String,
-            default: "normal"
-        },
-        gap: {
-            type: String,
-            default: "normal"
-        },
-        flexGrow: {
-            type: String,
-            default: "0"
-        },
-        flexShrink: {
-            type: String,
-            default: "1"
-        },
+        flexDirection: String,
+        flexWrap: String,
+        flexBasis: String,
+        justifyContent: String,
+        alignItems: String,
+        gap: String,    
+        flexGrow: String,
+        flexShrink: String,
     },
     setup(props) {
         const flexStyles = computed(() => ({
-            display: "flex",
             flexDirection: props.flexDirection,
             flexWrap: props.flexWrap,
             flexBasis: props.flexBasis,
@@ -60,3 +36,8 @@ export default {
     },
 }
 </script>
+<style scoped>
+div {
+    display:flex;
+}
+</style>

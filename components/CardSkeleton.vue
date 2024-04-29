@@ -18,16 +18,21 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    width: 270px;
-    height: 580px;
+    min-width: 270px;
+    max-width: 270px;
+    min-height: 350px;
+    max-height: 550px;
+    width: 15vw;
+    height: 62vh;
     border-radius: 10px;
     background-color: #fff;
-    padding-bottom: 40px;
+    padding-bottom: 5%;
+    flex-grow: 1;
     animation: boxFade 1.5s ease-in-out infinite;
 }
 
 .line {
-    height: 4%;
+    height: 19px;
     margin-left: 10%;
     margin-bottom: 2%;
     width: 60%;
@@ -35,8 +40,8 @@
 }
 
 .fakeBtn {
-    width: 50%;
-    height: 8%;
+    width: 130px;
+    height: 40px;
     border-radius: 7px;
     margin: 0 auto;
     margin-top: 12%;
@@ -53,42 +58,6 @@
 
     100% {
         background-color: #fff;
-    }
-}
-
-@media screen and (max-width: 1280px) {
-    .fakeBtn {
-        font-size: 1.2em;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .fakeBtn {
-        height: 10%;
-        width: 40%;
-    }
-
-    .line {
-        margin-left: 8%;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .fakeBtn {
-        font-size: 1.1em;
-        margin-top: 8%;
-    }
-
-    .box {
-        padding-bottom: 7%;
-        margin-bottom: 7%;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .fakeBtn {
-        height: 12%;
-        width: 40%;
     }
 }
 </style>

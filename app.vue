@@ -3,7 +3,7 @@
     <AppHeader />
     <main>
       <div class="background">
-      <Flex alignItems="center" justifyContent="center" flexWrap="wrap" gap="20" flexDirection="row" flexGrow="1">
+      <Flex alignItems="center" justifyContent="center" flexWrap="wrap" gap="20">
         <CardSkeleton v-if="isLoading" v-for="number in 3" />
         <Card v-else v-for="(card, index) in cards" :key="index" :class="`card-${index}`">
           <template #cardBody>
@@ -39,13 +39,6 @@
         <Form />
     </Flex>
     </div>
-    <Flex>
-    <div class="bg-orange" style="width:500px;height:50px;"></div>
-    <Spacer/>
-    <div class="bg-orange" style="width:200px;height:50px;"></div>
-    <Spacer/>
-    <div class="bg-orange" style="width:300px;height:50px;"></div>
-    </Flex>
     </main>
   </div>
 </template>
@@ -124,38 +117,19 @@ body {
   margin: 0 auto;
   font-family: "Roboto", sans-serif;
   background-color: black;
-
 }
 
 main {
   background-color: black;
-  height: 85vh;
-
+  height:90vh;
 }
 .background {
   display:flex;
-  filter: drop-shadow(0 0 100px #e3d61d66);
-  height:100%;
   width:100%;
+  height:100%;
+  filter: drop-shadow(0 0 100px #e3d61d66);
+  justify-content: center;
 }
-.grid {
-  width: 43%;
-  height: 70%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 20px;
-  justify-items: center;
-  margin: 0 auto;
-}
-
-.loader {
-  color: #e3d61d;
-  font-size: 3em;
-  text-transform: uppercase;
-  left: 45%;
-  position: absolute;
-}
-
 .card-0 {
   background-image: url("assets/images/yoda.png");
 }
@@ -167,59 +141,10 @@ main {
 .card-2 {
   background-image: url("assets/images/obi.png");
 }
-
-@media screen and (max-width: 1280px) {
-  .grid {
-    width: 60%;
-    height: 85%;
-    display: grid;
-  }
-}
-
-@media screen and (max-width: 1024px) {
+@media screen and (max-width:849px) {
   main {
-    height: 90vh;
-  }
-
-  .grid {
-    width: 85%;
-    height: 40%;
-    display: grid;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  main {
-    background-color: black;
-    height: 90vh;
-    align-items: center;
-    display: block;
-  }
-
-  .grid {
-    width: 90%;
-    height: 90%;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  main {
-    height: 150vh;
-    align-items: center;
-    display: block;
-  }
-
-  .grid {
-    width: 60%;
-    height: 33%;
-    display: block;
-    padding-top: 30px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  main {
-    height: 150vh;
+    height:100%;
+    padding: 20px 0;
   }
 }
 </style>
