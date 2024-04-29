@@ -15,12 +15,14 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  width: 100%;
-  height: 100%;
+  width: 270px;
+  height: 580px;
+  //width:15vw;
+  //height:62vh;
   border-radius: 10px;
   background-size: cover;
   background-repeat: no-repeat;
-  padding-bottom: 15%;
+  padding-bottom: 40px;
 }
 
 :deep(li) {

@@ -18,11 +18,11 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    width: 100%;
-    height: 100%;
+    width: 270px;
+    height: 580px;
     border-radius: 10px;
     background-color: #fff;
-    padding-bottom: 15%;
+    padding-bottom: 40px;
     animation: boxFade 1.5s ease-in-out infinite;
 }
 
@@ -64,8 +64,8 @@
 
 @media screen and (max-width: 768px) {
     .fakeBtn {
-        height:10%;
-        width:40%;
+        height: 10%;
+        width: 40%;
     }
 
     .line {
@@ -78,6 +78,7 @@
         font-size: 1.1em;
         margin-top: 8%;
     }
+
     .box {
         padding-bottom: 7%;
         margin-bottom: 7%;
@@ -86,8 +87,8 @@
 
 @media screen and (max-width: 400px) {
     .fakeBtn {
-        height:12%;
-        width:40%;
+        height: 12%;
+        width: 40%;
     }
 }
 </style>

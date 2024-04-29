@@ -47,10 +47,8 @@ export default {
 <style lang="scss" scoped>
 form {
   position: fixed;
-  top: -25%;
-  left: 25%;
   background-color: black;
-  padding: 50px;
+  padding: 30px;
   border-radius: 15px;
   border: 2px solid #e3d61d;
   box-shadow: 0px 0px 500px 200px black;
