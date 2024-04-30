@@ -1,21 +1,25 @@
 <template>
-    <div>
-        <h1>DIALOG</h1>
-    </div>
+    <Dialog class="dialog" :open="open" @close="$emit('close')">
+        <slot></slot>
+    </Dialog>
 </template>
 
 <script>
+import { Dialog } from "@headlessui/vue"
+import { ref } from "vue"
+
 export default {
-    name: "Dialog"
+
     props: {
         open: {
             type: Boolean,
+            default: false,
         },
         initialFocus: {
-            type: HTMLElement,
+            type: String,
         },
         as: {
-            type: String | Component,
+            type: String,
             default: "div",
         },
         static: {
@@ -29,13 +33,14 @@ export default {
     },
     setup(props) {
         
-        return {}
     }
 }
 </script>
 
 <style lang="scss" scoped>
-div {
+.dialog {
     background-color: red;
+    width:100px;
+    height:100px;
 }
 </style>

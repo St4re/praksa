@@ -1,6 +1,6 @@
 <template>
   <form v-if="isFormOpen" id="form" :class="hiddenClass">
-    <FormInputs :formInputs="formInputData" :editingItem="editingItem" />
+    <FormInputs  :editingItem="editingItem" />
     <div>
       <button @click.prevent="saveEdit" class="mr-4">Save</button>
       <button @click.prevent="cancelEdit">Cancel</button>

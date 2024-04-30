@@ -1,16 +1,19 @@
 <template>
-    <div>
-
-    </div>
+   <DialogTitle>
+    <slot></slot>
+   </DialogTitle>
 </template>
 
 <script setup>
+import {DialogTitle} from "@headlessui/vue"
+
+
 const props = defineProps({
     open: {
         type:Boolean,
     },
     as: {
-        type: String | Component,
+        type: String,
         default: "h2",
     }
 
