@@ -1,7 +1,7 @@
 <template>
-    <DialogDescription>
+    <div>
         <slot></slot>
-    </DialogDescription>
+    </div>
     
 </template>
 

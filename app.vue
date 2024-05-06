@@ -34,26 +34,45 @@
             </template>
             <template #cardFooter>
               <!--<ReusableButton @click="editItem(card)">Edit</ReusableButton>-->
-              <ReusableButton @click="openDialog">Edit</ReusableButton>
+              <ReusableButton @click="openModal">Edit</ReusableButton>
             </template>
           </Card>
           <!--<Form />-->
-          <MyDialog :open="isDialogOpen" @close="closeDialog">
-            <DialogPanel>
-              <DialogTitle>Character Data</DialogTitle>
-              <DialogDescription>Edit the information here:</DialogDescription>
-              <ReusableButton @click="saveChanges">Save</ReusableButton>
-              <ReusableButton @click="closeDialog">Cancel</ReusableButton>
-            </DialogPanel>
-          </MyDialog>
-        </Flex>
 
+        </Flex>
+        <!--<Dialog :open="isOpen" @close="closeModal" class="relative z-10">
+          <DialogPanel class="flex w-full h-full items-center justify-center flex-col bg-white">
+            <DialogTitle>Character Data</DialogTitle>
+            <DialogDescription>Edit the information here:</DialogDescription>
+            <ReusableButton @click="saveChanges">Save</ReusableButton>
+            <ReusableButton @click="closeModal">Cancel</ReusableButton>
+          </DialogPanel>
+        </Dialog>-->
+        <Dialog :open="isOpen" @close="closeModal">
+          <div class="fixed inset-0 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center">
+              <DialogPanel class="w-full max-w-md overflow-hidden rounded-2xl bg-black ">
+                <DialogTitle as="h3" class=" text-2xl font-medium leading-6 text-amber-300">
+                  Character Data
+                </DialogTitle>
+                <div class="mt-2">
+                  <p class="text-lg text-amber-300">
+                    Edit the information here:
+                  </p>
+                </div>
+                <FormInputs :editingItem="card" />
+                  <ReusableButton @click="saveChanges" >Save</ReusableButton>
+                  <ReusableButton @click="closeModal" >Cancel</ReusableButton>
+              </DialogPanel>
+            </div>
+          </div>
+        </Dialog>
       </div>
     </main>
   </div>
 </template>
 
-<script>
+<script setup>
 import Header from "@/components/Header.vue";
 import Card from "@/components/Card.vue";
 import Form from "@/components/Form.vue";
@@ -61,77 +80,61 @@ import ReusableButton from "@/components/ReusableButton.vue";
 import CardSkeleton from "@/components/CardSkeleton.vue";
 import Flex from "@/components/Flex.vue"
 import Spacer from "@/components/Spacer.vue"
-import MyDialog from "@/components/Dialog/MyDialog.vue"
-import DialogTitle from "@/components/Dialog/DialogTitle.vue"
-import DialogPanel from "@/components/Dialog/DialogPanel.vue"
-import DialogDescription from "@/components/Dialog/DialogDescription.vue"
+import FormInputs from "@/components/FormInputs.vue"
 
-import { reactive, ref, onMounted } from "vue";
+import {
+  Dialog, DialogTitle, DialogPanel, DialogDescription
+} from '@headlessui/vue'
+
+import { ref, onMounted } from "vue";
 import { useCardStore } from "@/stores/card.js";
 import { useFormStore } from "@/stores/form.js";
 import useAPI from "@/composables/useAPI.js";
 
-export default {
-  name: "App",
-  components: {
-    Header,
-    Card,
-    Form,
-    CardSkeleton,
-    Flex,
-    Spacer,
-    MyDialog,
-    DialogTitle,
-    DialogPanel,
-    DialogDescription
-  },
-  setup() {
-    const cards = ref([]); // constant array for list of cards
-    const isLoading = ref(true); //boolean for loader to show before fetching
-    const cardStore = useCardStore();
-    const formStore = useFormStore();
-    const { fetchData } = useAPI();
-    const isDialogOpen = ref(false);
+const cards = ref([]); // constant array for list of cards
+const isLoading = ref(true); //boolean for loader to show before fetching
+const cardStore = useCardStore();
+const formStore = useFormStore();
+const { fetchData } = useAPI();
 
-    onMounted(async () => {
-      // Fetch data from Star Wars API if localStorage is empty, else get it from localStorage
-      try {
-        if (!localStorage.localCards) {
-          const person = [20, 4, 10]; // IDs of people to fetch
-          const fetchPromises = person.map((id) =>
-            fetchData(`https://swapi.dev/api/people/${id}`)
-          );
-          const results = await Promise.all(fetchPromises);
-          cardStore.setCards(results); // Set data in pinia state
-          cards.value = results; // Set data to actual shown cards
-        } else {
-          const localCards = JSON.parse(localStorage.getItem("localCards")); // Get localStorage data
-          cardStore.setCards(localCards); // Set data to state
-          cards.value = localCards; // Set data to shown cards
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        isLoading.value = false; // Turn off loader
-      }
-    });
+onMounted(async () => {
+  // Fetch data from Star Wars API if localStorage is empty, else get it from localStorage
+  try {
+    if (!localStorage.localCards) {
+      const person = [20, 4, 10]; // IDs of people to fetch
+      const fetchPromises = person.map((id) =>
+        fetchData(`https://swapi.dev/api/people/${id}`)
+      );
+      const results = await Promise.all(fetchPromises);
+      cardStore.setCards(results); // Set data in pinia state
+      cards.value = results; // Set data to actual shown cards
+    } else {
+      const localCards = JSON.parse(localStorage.getItem("localCards")); // Get localStorage data
+      cardStore.setCards(localCards); // Set data to state
+      cards.value = localCards; // Set data to shown cards
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  } finally {
+    isLoading.value = false; // Turn off loader
+  }
+});
 
-    const editItem = (card) => {
-      formStore.openForm(card); // opens the editing form with the cards values
-
-    };
-
-    const openDialog = () => {
-      state.isDialogOpen = true;
-    };
-
-    const closeDialog = () => {
-      state.isDialogOpen = false;
-    };
-    return { cards, isLoading, editItem, openDialog, closeDialog, isDialogOpen };
-  },
+const editItem = (card) => {
+  formStore.openForm(card); // opens the editing form with the cards values
 };
+
+const isOpen = ref(false)
+
+function openModal() {
+  isOpen.value = true;
+}
+function closeModal() {
+  isOpen.value = false;
+}
+
 </script>
+
 <style scoped lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 

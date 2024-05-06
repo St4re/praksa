@@ -1,7 +1,7 @@
 <template>
-    <DialogPanel>
+    <div>
         <slot></slot>
-    </DialogPanel>
+    </div>
 </template>
 
 <script setup>
@@ -9,9 +9,7 @@ import {DialogPanel} from "@headlessui/vue"
 
 
 const props = defineProps({
-    open: {
-        type:Boolean,
-    },
+    open: Boolean,
     as: {
         type: String,
         default: "div",

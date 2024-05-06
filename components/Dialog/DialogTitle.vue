@@ -1,11 +1,11 @@
 <template>
-   <DialogTitle>
+   <div>
     <slot></slot>
-   </DialogTitle>
+   </div>
 </template>
 
 <script setup>
-import {DialogTitle} from "@headlessui/vue"
+import {DialogTitle as hdlssDialogTitle} from "@headlessui/vue"
 
 
 const props = defineProps({
