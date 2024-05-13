@@ -34,20 +34,12 @@
             </template>
             <template #cardFooter>
               <!--<ReusableButton @click="editItem(card)">Edit</ReusableButton>-->
-              <ReusableButton @click="openModal">Edit</ReusableButton>
+              <ReusableButton @click="editItem(card)">Edit</ReusableButton>
             </template>
           </Card>
           <!--<Form />-->
 
         </Flex>
-        <!--<Dialog :open="isOpen" @close="closeModal" class="relative z-10">
-          <DialogPanel class="flex w-full h-full items-center justify-center flex-col bg-white">
-            <DialogTitle>Character Data</DialogTitle>
-            <DialogDescription>Edit the information here:</DialogDescription>
-            <ReusableButton @click="saveChanges">Save</ReusableButton>
-            <ReusableButton @click="closeModal">Cancel</ReusableButton>
-          </DialogPanel>
-        </Dialog>-->
         <Dialog :open="isOpen" @close="closeModal">
           <div class="fixed inset-0 overflow-y-auto">
             <div class="flex min-h-full items-center justify-center p-4 text-center">
@@ -55,13 +47,13 @@
                 <DialogTitle as="h3" class=" text-2xl font-medium leading-6 text-amber-300">
                   Character Data
                 </DialogTitle>
-                <div class="mt-2">
+                <DialogDescription class="mt-2">
                   <p class="text-lg text-amber-300">
                     Edit the information here:
                   </p>
-                </div>
-                <FormInputs :editingItem="card" />
-                  <ReusableButton @click="saveChanges" >Save</ReusableButton>
+                </DialogDescription>
+                <FormInputs :editingItem="editingItem" :formInputs="formInputData" />
+                  <ReusableButton class="mr-4" @click="saveChanges(index)" >Save</ReusableButton>
                   <ReusableButton @click="closeModal" >Cancel</ReusableButton>
               </DialogPanel>
             </div>
@@ -75,18 +67,21 @@
 <script setup>
 import Header from "@/components/Header.vue";
 import Card from "@/components/Card.vue";
-import Form from "@/components/Form.vue";
 import ReusableButton from "@/components/ReusableButton.vue";
 import CardSkeleton from "@/components/CardSkeleton.vue";
 import Flex from "@/components/Flex.vue"
-import Spacer from "@/components/Spacer.vue"
 import FormInputs from "@/components/FormInputs.vue"
+import formInputData from "@/assets/formInputData.json"
 
-import {
+/*import {
   Dialog, DialogTitle, DialogPanel, DialogDescription
-} from '@headlessui/vue'
+} from '@headlessui/vue'*/
 
-import { ref, onMounted } from "vue";
+import Dialog from '@/components/Dialog/Dialog.vue'
+import DialogTitle from "@/components/Dialog/DialogTitle.vue"
+import DialogPanel from "@/components/Dialog/DialogPanel.vue"
+import DialogDescription from "@/components/Dialog/DialogDescription.vue"
+
 import { useCardStore } from "@/stores/card.js";
 import { useFormStore } from "@/stores/form.js";
 import useAPI from "@/composables/useAPI.js";
@@ -121,15 +116,20 @@ onMounted(async () => {
 });
 
 const editItem = (card) => {
-  formStore.openForm(card); // opens the editing form with the cards values
+  isOpen.value = true;
+  formStore.editingItem = card
+  formStore.originalData = JSON.parse(JSON.stringify(card))
 };
 
 const isOpen = ref(false)
+const editingItem = computed(() => formStore.editingItem)
 
-function openModal() {
-  isOpen.value = true;
+function saveChanges(numberOfCard) {
+  cardStore.updateCards(numberOfCard, formStore.editingItem);
+  isOpen.value = false;
 }
 function closeModal() {
+  formStore.restoreOriginalData();
   isOpen.value = false;
 }
 

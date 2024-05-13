@@ -8,16 +8,12 @@
 import {DialogTitle as hdlssDialogTitle} from "@headlessui/vue"
 
 
-const props = defineProps({
-    open: {
-        type:Boolean,
-    },
+/*const props = defineProps({
     as: {
-        type: String,
-        default: "h2",
-    }
-
-})
+      type: (Object | String),
+      default: String,
+    },
+})*/
 </script>
 
 <style lang="scss" scoped>

@@ -8,14 +8,12 @@
 import {DialogPanel} from "@headlessui/vue"
 
 
-const props = defineProps({
-    open: Boolean,
+/*const props = defineProps({
     as: {
-        type: String,
-        default: "div",
-    }
-
-})
+      type: (Object | String),
+      default: String,
+    },
+})*/
 </script>
 
 <style lang="scss" scoped>

@@ -8,16 +8,12 @@
 <script setup>
 import {DialogDescription} from "@headlessui/vue"
 
-const props = defineProps({
-    open: {
-        type:Boolean,
-    },
+/*const props = defineProps({
     as: {
-        type: String,
-        default: "p",
-    }
-
-})
+      type: (Object | String),
+      default: String,
+    },
+})*/
 </script>
 
 <style lang="scss" scoped>
