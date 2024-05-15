@@ -1,21 +1,27 @@
 <template>
-   <div>
+  <HdlssDialogTitle class="dialogTitle">
     <slot></slot>
-   </div>
+  </HdlssDialogTitle>
 </template>
 
-<script setup>
-import {DialogTitle as hdlssDialogTitle} from "@headlessui/vue"
+<script>
+import {DialogTitle as HdlssDialogTitle} from "@headlessui/vue"
 
-
-/*const props = defineProps({
+export default {
+  components: {
+    HdlssDialogTitle,
+  },
+  props: {
     as: {
-      type: (Object | String),
-      default: String,
+      type: [Object, String],
+      default: "h2",
     },
-})*/
+  },
+  }
 </script>
 
 <style lang="scss" scoped>
-
+.dialogTitle {
+  margin-bottom: 7px;
+}
 </style>

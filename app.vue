@@ -41,19 +41,19 @@
 
         </Flex>
         <Dialog :open="isOpen" @close="closeModal">
-          <div class="fixed inset-0 overflow-y-auto">
+          <div class="fixed inset-0 overflow-y-auto backdrop-blur">
             <div class="flex min-h-full items-center justify-center p-4 text-center">
               <DialogPanel class="w-full max-w-md overflow-hidden rounded-2xl bg-black ">
-                <DialogTitle as="h3" class=" text-2xl font-medium leading-6 text-amber-300">
+                <DialogTitle class="text-2xl font-medium leading-6 text-amber-300">
                   Character Data
                 </DialogTitle>
-                <DialogDescription class="mt-2">
+                <DialogDescription>
                   <p class="text-lg text-amber-300">
                     Edit the information here:
                   </p>
                 </DialogDescription>
                 <FormInputs :editingItem="editingItem" :formInputs="formInputData" />
-                  <ReusableButton class="mr-4" @click="saveChanges(index)" >Save</ReusableButton>
+                  <ReusableButton class="dialogBtn" @click="saveChanges(index)" >Save</ReusableButton>
                   <ReusableButton @click="closeModal" >Cancel</ReusableButton>
               </DialogPanel>
             </div>
@@ -72,10 +72,6 @@ import CardSkeleton from "@/components/CardSkeleton.vue";
 import Flex from "@/components/Flex.vue"
 import FormInputs from "@/components/FormInputs.vue"
 import formInputData from "@/assets/formInputData.json"
-
-/*import {
-  Dialog, DialogTitle, DialogPanel, DialogDescription
-} from '@headlessui/vue'*/
 
 import Dialog from '@/components/Dialog/Dialog.vue'
 import DialogTitle from "@/components/Dialog/DialogTitle.vue"
@@ -173,6 +169,10 @@ main {
 
 .card-2 {
   background-image: url("assets/images/obi.png");
+}
+
+.dialogBtn {
+  margin-right:20px;
 }
 
 @media screen and (max-width:849px) {
