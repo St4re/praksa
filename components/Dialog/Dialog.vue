@@ -1,5 +1,6 @@
 <template>
-  <HdlssDialog :open="isOpen">
+  <HdlssDialog :open="isOpen" :onClose="passOnClose" :initialFocus="passFocus" :as="passAs" :static="passStatic"
+    :unmount="passUnmount">
     <slot></slot>
   </HdlssDialog>
 </template>
@@ -15,6 +16,7 @@ export default {
   },
   props: {
     open: Boolean,
+    onClose: Object,
     initialFocus: String,
     as: {
       type: [Object, String],
@@ -31,11 +33,33 @@ export default {
   },
   setup(props) {
     const isOpen = ref(false);
+    const passOnClose = ref(null);
+    const passFocus = ref(null);
+    const passAs = ref("div");
+    const passStatic = ref(false);
+    const passUnmount = ref(true);
+
 
     watch(() => props.open, (newVal) => {
       isOpen.value = newVal;
     });
-    return { isOpen }
+    watch(() => props.open, (newVal) => {
+      isOpen.value = newVal;
+    });
+    watch(() => props.open, (newVal) => {
+      isOpen.value = newVal;
+    });
+    watch(() => props.open, (newVal) => {
+      isOpen.value = newVal;
+    });
+    watch(() => props.open, (newVal) => {
+      isOpen.value = newVal;
+    });
+    watch(() => props.open, (newVal) => {
+      isOpen.value = newVal;
+    });
+
+    return { isOpen, passOnClose, passFocus, passAs, passStatic, passUnmount }
   }
 }
 </script>

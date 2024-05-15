@@ -3,7 +3,7 @@
     <Header />
     <main>
       <div class="background">
-        <Flex alignItems="center" justifyContent="center" flexWrap="wrap" gap="20">
+        <Flex alignItems="center" justifyContent="center" flexWrap="wrap" gap="20px">
           <CardSkeleton v-if="isLoading" v-for="number in 3" />
           <Card v-else v-for="(card, index) in cards" :key="index" :class="`card-${index}`">
             <template #cardBody>
@@ -44,7 +44,7 @@
           <div class="fixed inset-0 overflow-y-auto backdrop-blur">
             <div class="flex min-h-full items-center justify-center p-4 text-center">
               <DialogPanel class="w-full max-w-md overflow-hidden rounded-2xl bg-black ">
-                <DialogTitle class="text-2xl font-medium leading-6 text-amber-300">
+                <DialogTitle as="h3" class="text-2xl font-medium leading-6 text-amber-300">
                   Character Data
                 </DialogTitle>
                 <DialogDescription>

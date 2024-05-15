@@ -17,6 +17,14 @@ export default {
       default: "h2",
     },
   },
+  setup(props) {
+    const as = ref(props.as);
+
+    watch(() => props.as, (newVal) => {
+      as.value = newVal;
+    });
+    return { as }
+  }
 }
 </script>
 
