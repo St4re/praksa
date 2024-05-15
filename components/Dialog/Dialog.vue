@@ -1,12 +1,12 @@
 <template>
-    <HdlssDialog :open="isOpen">
+  <HdlssDialog :open="isOpen">
     <slot></slot>
   </HdlssDialog>
 </template>
 
 
 <script>
-import {ref} from "vue"
+import { ref } from "vue"
 import { Dialog as HdlssDialog } from '@headlessui/vue'
 
 export default {
@@ -14,7 +14,7 @@ export default {
     HdlssDialog,
   },
   props: {
-    open:  Boolean,
+    open: Boolean,
     initialFocus: String,
     as: {
       type: [Object, String],
@@ -35,11 +35,9 @@ export default {
     watch(() => props.open, (newVal) => {
       isOpen.value = newVal;
     });
-    return {isOpen}
+    return { isOpen }
   }
-  }
+}
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

@@ -1,27 +1,27 @@
 <template>
     <HdlssDialogPanel class="panel">
-      <slot></slot>
+        <slot></slot>
     </HdlssDialogPanel>
-  </template>
-  
-  <script>
-  import {DialogTitle as HdlssDialogPanel} from "@headlessui/vue"
-  
-  export default {
+</template>
+
+<script>
+import { DialogPanel as HdlssDialogPanel } from "@headlessui/vue"
+
+export default {
     components: {
-      HdlssDialogPanel,
+        HdlssDialogPanel,
     },
     props: {
-      as: {
-        type: [Object, String],
-        default: "div",
-      },
+        as: {
+            type: [Object, String],
+            default: "div",
+        },
     },
-    }
-  </script>
-  
-  <style lang="scss" scoped>
-  .panel {
+}
+</script>
+
+<style lang="scss" scoped>
+.panel {
     padding: 30px 0;
-  }
-  </style>
+}
+</style>

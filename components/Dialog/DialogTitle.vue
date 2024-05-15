@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import {DialogTitle as HdlssDialogTitle} from "@headlessui/vue"
+import { DialogTitle as HdlssDialogTitle } from "@headlessui/vue"
 
 export default {
   components: {
@@ -17,7 +17,7 @@ export default {
       default: "h2",
     },
   },
-  }
+}
 </script>
 
 <style lang="scss" scoped>

@@ -5,7 +5,7 @@
   </template>
   
   <script>
-  import {DialogTitle as HdlssDialogDescription} from "@headlessui/vue"
+  import {DialogDescription as HdlssDialogDescription} from "@headlessui/vue"
   
   export default {
     components: {
