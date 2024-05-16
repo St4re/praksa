@@ -1,5 +1,5 @@
 <template>
-  <HdlssDialog :open="isOpen" :onClose="passOnClose" :initialFocus="passFocus" :as="passAs" :static="passStatic"
+  <HdlssDialog :open="isOpen" :initialFocus="passFocus" :as="passAs" :static="passStatic"
     :unmount="passUnmount">
     <slot></slot>
   </HdlssDialog>
@@ -16,8 +16,7 @@ export default {
   },
   props: {
     open: Boolean,
-    onClose: Object,
-    initialFocus: String,
+    initialFocus: Object,
     as: {
       type: [Object, String],
       default: "div",
@@ -33,33 +32,24 @@ export default {
   },
   setup(props) {
     const isOpen = ref(false);
-    const passOnClose = ref(null);
-    const passFocus = ref(null);
-    const passAs = ref("div");
+    const passFocus = ref({});
+    const passAs = ref(props.as);
     const passStatic = ref(false);
     const passUnmount = ref(true);
 
-
-    watch(() => props.open, (newVal) => {
-      isOpen.value = newVal;
-    });
-    watch(() => props.open, (newVal) => {
-      isOpen.value = newVal;
-    });
-    watch(() => props.open, (newVal) => {
-      isOpen.value = newVal;
-    });
-    watch(() => props.open, (newVal) => {
-      isOpen.value = newVal;
-    });
-    watch(() => props.open, (newVal) => {
-      isOpen.value = newVal;
-    });
-    watch(() => props.open, (newVal) => {
-      isOpen.value = newVal;
-    });
-
-    return { isOpen, passOnClose, passFocus, passAs, passStatic, passUnmount }
+   watch(
+  [() => props.open, () => props.initialFocus, () => props.static, () => props.unmount],
+  ([open, initialFocus, staticProp, unmount]) => {
+    isOpen.value = open;
+    passFocus.value = initialFocus;
+    passStatic.value = staticProp;
+    passUnmount.value = unmount;
+  }
+);
+    console.log(props.as)
+    console.log(passAs)
+    console.log(isOpen, passFocus, passAs, passStatic, passUnmount)
+    return { isOpen, passFocus, passAs, passStatic, passUnmount }
   }
 }
 </script>

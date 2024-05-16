@@ -40,21 +40,21 @@
           <!--<Form />-->
 
         </Flex>
-        <Dialog :open="isOpen" @close="closeModal">
+        <Dialog :open="isOpen" @close="closeModal" :initialFocus="completeButtonRef">
           <div class="fixed inset-0 overflow-y-auto backdrop-blur">
             <div class="flex min-h-full items-center justify-center p-4 text-center">
-              <DialogPanel class="w-full max-w-md overflow-hidden rounded-2xl bg-black ">
+              <DialogPanel as="article" class="w-full max-w-md overflow-hidden rounded-2xl bg-black ">
                 <DialogTitle as="h3" class="text-2xl font-medium leading-6 text-amber-300">
                   Character Data
                 </DialogTitle>
-                <DialogDescription>
+                <DialogDescription as="h6">
                   <p class="text-lg text-amber-300">
                     Edit the information here:
                   </p>
                 </DialogDescription>
                 <FormInputs :editingItem="editingItem" :formInputs="formInputData" />
-                  <ReusableButton class="dialogBtn" @click="saveChanges(index)" >Save</ReusableButton>
-                  <ReusableButton @click="closeModal" >Cancel</ReusableButton>
+                <ReusableButton class="dialogBtn" @click="saveChanges(index)">Save</ReusableButton>
+                <ReusableButton @click="closeModal">Cancel</ReusableButton>
               </DialogPanel>
             </div>
           </div>
@@ -117,7 +117,8 @@ const editItem = (card) => {
   formStore.originalData = JSON.parse(JSON.stringify(card))
 };
 
-const isOpen = ref(false)
+const isOpen = ref(false);
+const completeButtonRef = ref(null)
 const editingItem = computed(() => formStore.editingItem)
 
 function saveChanges(numberOfCard) {
@@ -172,7 +173,7 @@ main {
 }
 
 .dialogBtn {
-  margin-right:20px;
+  margin-right: 20px;
 }
 
 @media screen and (max-width:849px) {
