@@ -36,9 +36,8 @@ export default {
         },
         gap: {
             validator: function (value) {
-                // Regular expression to check for one or two numbers or specific keywords
-                const validGapRegex = /^(initial|inherit|(\d+(px|em|%)?\s?\d*(px|em|%)?))$/;
-                return validGapRegex.test(value);
+                const gapOptions = /^(initial|inherit|(\d+(px|em|%)?\s?\d*(px|em|%)?))$/;
+                return gapOptions.test(value);
             }
         },
         flexGrow: {

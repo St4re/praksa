@@ -1,5 +1,5 @@
 <template>
-  <HdlssDialogTitle class="dialogTitle">
+  <HdlssDialogTitle class="dialogTitle" :as="passAs">
     <slot></slot>
   </HdlssDialogTitle>
 </template>
@@ -18,12 +18,8 @@ export default {
     },
   },
   setup(props) {
-    const as = ref(props.as);
-
-    watch(() => props.as, (newVal) => {
-      as.value = newVal;
-    });
-    return { as }
+    const passAs = ref(props.as);
+    return { passAs }
   }
 }
 </script>

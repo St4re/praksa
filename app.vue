@@ -2,10 +2,11 @@
   <div>
     <Header />
     <main>
+      <div id="text" style="color:white;text-align:center;font-size: 2em;"></div>
       <div class="background">
         <Flex alignItems="center" justifyContent="center" flexWrap="wrap" gap="20px">
           <CardSkeleton v-if="isLoading" v-for="number in 3" />
-          <Card v-else v-for="(card, index) in cards" :key="index" :class="`card-${index}`">
+          <Card v-else v-for="(card, index) in cards" :key="index" :class="`card card-${index}`">
             <template #cardBody>
               <li>
                 Name: <span class="capitalize">{{ card.name }}</span>
@@ -40,21 +41,21 @@
           <!--<Form />-->
 
         </Flex>
-        <Dialog :open="isOpen" @close="closeModal">
+        <Dialog :open="isOpen" @close="closeModal" :initialFocus="completeButtonRef">
           <div class="fixed inset-0 overflow-y-auto backdrop-blur">
             <div class="flex min-h-full items-center justify-center p-4 text-center">
-              <DialogPanel class="w-full max-w-md overflow-hidden rounded-2xl bg-black ">
+              <DialogPanel as="article" class="w-full max-w-md overflow-hidden rounded-2xl bg-black ">
                 <DialogTitle as="h3" class="text-2xl font-medium leading-6 text-amber-300">
                   Character Data
                 </DialogTitle>
-                <DialogDescription>
+                <DialogDescription as="h6">
                   <p class="text-lg text-amber-300">
                     Edit the information here:
                   </p>
                 </DialogDescription>
                 <FormInputs :editingItem="editingItem" :formInputs="formInputData" />
-                  <ReusableButton class="dialogBtn" @click="saveChanges(index)" >Save</ReusableButton>
-                  <ReusableButton @click="closeModal" >Cancel</ReusableButton>
+                <ReusableButton ref="completeButtonRef" class="dialogBtn" @click="saveChanges(index)">Save</ReusableButton>
+                <ReusableButton @click="closeModal">Cancel</ReusableButton>
               </DialogPanel>
             </div>
           </div>
@@ -104,9 +105,11 @@ onMounted(async () => {
       cardStore.setCards(localCards); // Set data to state
       cards.value = localCards; // Set data to shown cards
     }
-  } catch (error) {
+  } 
+  catch (error) {
     console.error("Error fetching data:", error);
-  } finally {
+  } 
+  finally {
     isLoading.value = false; // Turn off loader
   }
 });
@@ -117,7 +120,8 @@ const editItem = (card) => {
   formStore.originalData = JSON.parse(JSON.stringify(card))
 };
 
-const isOpen = ref(false)
+const isOpen = ref(false);
+const completeButtonRef = ref(null)
 const editingItem = computed(() => formStore.editingItem)
 
 function saveChanges(numberOfCard) {
@@ -128,6 +132,18 @@ function closeModal() {
   formStore.restoreOriginalData();
   isOpen.value = false;
 }
+
+ async function postString(statement, timer) {
+  try {
+  setTimeout(() => {
+    document.getElementById("text").innerHTML = statement;
+  }, timer);
+} catch (error) {
+  console.error(`Error: ${error}`)
+}
+}
+
+postString("May the force be with you", 3000)
 
 </script>
 
@@ -159,6 +175,35 @@ main {
   justify-content: center;
 }
 
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 270px;
+  max-width:270px;
+  min-height: 350px;
+  max-height: 550px;
+  width:15vw;
+  height:62vh;
+  border-radius: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-bottom: 5%;
+  flex-grow:1;
+  
+  li {
+  color: white;
+  font-size: 1.1em;
+  margin-left: 10%;
+  font-weight: 300;
+  list-style: none;
+}
+
+span {
+  font-weight: 600;
+}
+}
+
 .card-0 {
   background-image: url("assets/images/yoda.png");
 }
@@ -172,7 +217,7 @@ main {
 }
 
 .dialogBtn {
-  margin-right:20px;
+  margin-right: 20px;
 }
 
 @media screen and (max-width:849px) {

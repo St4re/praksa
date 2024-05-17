@@ -1,5 +1,5 @@
 <template>
-    <HdlssDialogPanel class="panel">
+    <HdlssDialogPanel class="panel" :as="passAs">
         <slot></slot>
     </HdlssDialogPanel>
 </template>
@@ -17,6 +17,10 @@ export default {
             default: "div",
         },
     },
+    setup(props) {
+        const passAs = ref(props.as);
+        return { passAs }
+    }
 }
 </script>
 
